@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#grid{
+	height: 500px;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.gridElement{
+	background-color: lightblue;
+	border: 1px solid black;
+}
