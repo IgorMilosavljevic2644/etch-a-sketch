@@ -43,7 +43,7 @@ $(document).ready(function() {
 		$("#gridReset").on('click', function(){
 			$('.gridElement').removeClass('change');
 			$('.gridElement').css({
-				"background-color" : "lightblue"
+				"background-color" : "white"
 			})
 		});
 });
