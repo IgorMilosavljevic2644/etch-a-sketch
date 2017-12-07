@@ -1,10 +1,36 @@
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+}
+
+function changeOnHover(){
+	$('input[name=color]').on('click', function() {
+	let value = $('input[name=color]:checked').val();
+	if(value == 'black'){
+		$(".gridElement").hover(function() {
+			$(this).css({'background-color' : 'black',
+	   		 			 'border' : "1px solid black"});
+		});
+	} else if(value == 'colored'){
+			$('.gridElement').hover(function(){
+				$(this).css({
+	 			'background-color' : getRandomColor()
+	 		});
+		});
+	}
+});
+}
+
+function gridReset(){
+	$("#gridReset").on('click', function(){
+	$('.gridElement').css({
+		"background-color" : "white",
+	})
+});
 }
 
 $(document).ready(function() {
@@ -18,33 +44,18 @@ $(document).ready(function() {
 		$("#grid").append("<div class='gridElement'></div>");
 		}
 
-
-		$("#black").on('click', function(){
-			$('.gridElement').hover(function() {
-			$(this).css({'background-color' : 'black',
-						 'border' : "1px solid black"})
-			});
-		});
-
-		$('#colored').on('click', function(){
-			$('.gridElement').hover(function() {
-				$(this).css({
-					'background-color' : getRandomColor()
-				});
-			});
-		});
-
 		$("#grid").css({
 			'grid-template-columns' : 'repeat(' + gridSize + ", 1fr)",
 			'grid-template-rows' : 'repeat(' + gridSize + ", 1fr)"
-			});
 		});
 
-		$("#gridReset").on('click', function(){
-			$('.gridElement').removeClass('change');
-			$('.gridElement').css({
-				"background-color" : "white"
-			})
-		});
+		gridReset();
+		changeOnHover();
+	});
+
+
+	changeOnHover();
+
+
 });
 
